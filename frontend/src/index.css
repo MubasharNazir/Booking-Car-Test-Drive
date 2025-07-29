@@ -1,0 +1,11 @@
+/* Custom base styles (replacing Tailwind) */
+@import '@fontsource/inter/index.css';
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f7f7fa;
+  margin: 0;
+  color: #222;
+}
+
+/* Add more custom styles below as needed */

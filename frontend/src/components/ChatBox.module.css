@@ -1,0 +1,101 @@
+.chatbox-outer {
+  background: #f7f8fa;
+  border-radius: 20px;
+  border: 1px solid #ececec;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  padding: 0 16px 16px 16px; /* increased bottom padding */
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+  position: relative;
+}
+
+.chatbox-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.chatbox-inner {
+  display: flex;
+  align-items: center;
+  padding-top: 16px; /* increased top padding */
+  padding-bottom: 0;
+}
+
+.chatbox-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  padding: 14px 0 14px 0; /* increased and balanced vertical padding */
+  outline: none;
+  color: #222;
+  box-sizing: border-box;
+}
+
+.chatbox-input::placeholder {
+  color: #a0aec0;
+  font-size: 0.95rem;
+  opacity: 1;
+  position: relative;
+  top: 0; /* reset to default, let padding center it */
+}
+
+.chatbox-send-btn {
+  background: #e5eaf1;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chatbox-send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chatbox-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* more space between tags */
+  margin-top: 10px; /* more space above tags */
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.chatbox-tag {
+  background: #f1f3f6;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.chatbox-tag-active {
+  background: #10B981;
+  color: #fff;
+  border: 1px solid #10B981;
+  border-radius: 12px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+} 

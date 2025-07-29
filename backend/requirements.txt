@@ -1,0 +1,12 @@
+uvicorn[standard]
+fastapi
+SQLAlchemy[asyncio]
+pydantic-settings
+asyncpg
+psycopg2-binary
+pgvector
+langchain-community
+sentence-transformers
+boto3
+google-generativeai
+python-multipart
