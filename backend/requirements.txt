@@ -6,7 +6,9 @@ asyncpg
 psycopg2-binary
 pgvector
 langchain-community
-sentence-transformers
+sentence-transformers[cpu]
+torch-cpu
+transformers[cpu]
 boto3
 google-generativeai
 python-multipart
