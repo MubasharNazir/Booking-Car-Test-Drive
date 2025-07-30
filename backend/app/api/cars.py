@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.session import get_db
 from app.db import models
 from app.schemas.car import CarCreate, Car
-from app.utils.embedding import get_car_embedding
+from app.utils.embedding import generate_embedding
 
 router = APIRouter(prefix="/api/cars", tags=["Cars"])
 
@@ -18,7 +18,7 @@ async def create_car(car: CarCreate, db: AsyncSession = Depends(get_db)):
     car_data["fuel_type"] = car_data["fuel_type"].value
     # Generate embedding from car details (company, model, year, description, features)
     text_for_embedding = f"{car_data['company_name']} {car_data['model']} {car_data['year']} {car_data.get('description', '')} {' '.join(car_data.get('features', []))}"
-    car_data["embedding"] = get_car_embedding(text_for_embedding)
+    car_data["embedding"] = generate_embedding(text_for_embedding)
     db_car = models.Car(**car_data)
     db.add(db_car)
     await db.commit()

@@ -1,0 +1,14 @@
+uvicorn[standard]
+fastapi
+SQLAlchemy[asyncio]
+pydantic-settings
+asyncpg
+psycopg2-binary
+pgvector
+boto3
+google-generativeai
+python-multipart
+# Lighter alternatives for ML
+transformers
+scikit-learn
+numpy 
