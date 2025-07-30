@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_, or_, func
 from app.db.session import get_db
 from app.db.models import Car
-from app.utils.embedding import get_car_embedding
+from app.utils.embedding import generate_embedding
 from app.schemas.car import Car as CarSchema
 from typing import List, Union
 from pydantic import BaseModel, Field
@@ -79,7 +79,7 @@ async def chat_search(payload: ChatQuery, db: AsyncSession = Depends(get_db)):
     
     print(f"Total cars in database: {len(total_cars)}")  # Debug print
     
-    query_embedding = get_car_embedding(payload.query)
+    query_embedding = generate_embedding(payload.query)
     entities = extract_entities_with_gemini(payload.query)
     print(f"DEBUG: Entities extracted: {entities}")  # Debug print
     conditions = []

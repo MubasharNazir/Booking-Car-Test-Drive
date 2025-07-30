@@ -5,9 +5,10 @@ pydantic-settings
 asyncpg
 psycopg2-binary
 pgvector
-langchain-community
-torch
-sentence-transformers
 boto3
 google-generativeai
 python-multipart
+# Lighter alternatives for ML
+transformers
+scikit-learn
+numpy 

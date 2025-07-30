@@ -3,7 +3,6 @@ import {
   Car, 
   Calendar, 
   Clock, 
-  MapPin, 
   Star, 
   Shield, 
   Zap, 
@@ -11,14 +10,7 @@ import {
   CreditCard,
   Users,
   Navigation,
-  Phone,
-  Mail,
-  Filter,
-  Search,
-  ChevronDown,
-  CheckCircle,
-  Crown,
-  Sparkles
+  Crown
 } from 'lucide-react';
 import styles from './BookRide.module.css';
 

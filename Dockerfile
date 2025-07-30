@@ -8,16 +8,16 @@ RUN apt-get update && apt-get install -y \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
-COPY requirements.txt .
+# Copy minimal requirements and install
+COPY backend/requirements-minimal.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY ./app ./app
+COPY backend/app ./app
 
 # Expose port
 EXPOSE 8000
 
-# Run the application
+# Use a fixed port - Railway will handle port mapping
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

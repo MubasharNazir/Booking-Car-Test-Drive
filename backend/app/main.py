@@ -1,24 +1,13 @@
-# # from app.api.cars import router as cars_router
-# # app.include_router(cars_router)
-# from fastapi import FastAPI
-# from app.api.cars import router as cars_router  # import your cars router
-
-# app = FastAPI()
-
-# # Include the cars router under the path /cars (optional)
-# app.include_router(cars_router, prefix="/cars")
-
-# # Optional root endpoint for sanity check
-# @app.get("/")
-# async def root():
-#     return {"message": "FastAPI app is running!"}
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.cars import router as cars_router
 from app.api.chat import router as chat_router
 from app.api.upload import router as upload_router
 from app.api.booking import router as booking_router
-
+from app.db.models import Base
+from app.db.session import engine
+from sqlalchemy import text
+import asyncio
 
 # from app.core.config import settings  # To be implemented
 
@@ -33,12 +22,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+async def startup_event():
+    """Create database tables on startup"""
+    try:
+        async with engine.begin() as conn:
+            # Install pgvector extension first
+            await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
+            print("✅ pgvector extension installed!")
+            
+            # Create tables
+            await conn.run_sync(Base.metadata.create_all)
+            print("✅ Database tables created successfully!")
+    except Exception as e:
+        print(f"❌ Error creating tables: {e}")
 
 app.include_router(cars_router)
 app.include_router(chat_router)
 app.include_router(upload_router)
 app.include_router(booking_router)
+
 @app.get("/", tags=["Health"])
 def health_check():
     """Health check endpoint."""
-    return {"status": "ok"}
+    return {"status": "ok", "message": "Database tables will be created on startup"}

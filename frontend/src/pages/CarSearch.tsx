@@ -3,7 +3,7 @@ import ChatBox from '../components/ChatBox';
 import CarCard from '../components/CarCard';
 import type { Car } from '../api/cars';
 import { chatCarSearch } from '../api/cars';
-import { User, Bot, Car as CarIcon, Sparkles, Filter, Zap, Award, DollarSign, Calendar, ChevronRight, Star, X, Search, Compass, Shield, Clock, Menu, Home, Settings } from 'lucide-react';
+import { User, Car as CarIcon, Sparkles, Zap, Award, DollarSign, Calendar, ChevronRight, Menu, Settings } from 'lucide-react';
 import styles from './CarSearch.module.css';
 import logo from '../assets/logo.webp';
 
@@ -128,13 +128,6 @@ const CarSearch: React.FC = () => {
   };
 
   const handleChatBoxSend = (query: string) => handleSend(query);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend(input);
-    }
-  };
 
   const handleClearChat = () => {
     setMessages([{
@@ -171,7 +164,7 @@ const CarSearch: React.FC = () => {
                 {messages.map((msg, idx) => (
             <div key={msg.id}>
               {msg.cars ? (
-                      <CarResults cars={msg.cars} feature={msg.query} />
+                      <CarResults cars={msg.cars} />
                     ) : (
                       idx > 0 && <MessageBubble message={msg} />
                     )}
@@ -390,7 +383,7 @@ const TypingIndicator = () => (
 
 const DEFAULT_LIMIT = 3;
 
-function CarResults({ cars, feature }: { cars: Car[]; feature?: string }) {
+function CarResults({ cars }: { cars: Car[] }) {
   const [showAll, setShowAll] = useState(false);
 
   const visibleCars = showAll ? cars : cars.slice(0, DEFAULT_LIMIT);

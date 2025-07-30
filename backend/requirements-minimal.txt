@@ -5,9 +5,6 @@ pydantic-settings
 asyncpg
 psycopg2-binary
 pgvector
-langchain-community
-torch
-sentence-transformers
 boto3
 google-generativeai
-python-multipart
+python-multipart 
