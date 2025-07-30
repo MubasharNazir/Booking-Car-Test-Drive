@@ -1,9 +1,9 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CarSearch from './pages/CarSearch';
 import Dashboard from './pages/Dashboard';
 import BookRide from './pages/BookRide';
 
+// Car Booking Test Drive App - Main Component
 function App() {
   return (
     <Router>
