@@ -3,6 +3,7 @@ import CarSearch from './pages/CarSearch';
 import Dashboard from './pages/Dashboard';
 import BookRide from './pages/BookRide';
 
+// Car Booking Test Drive App - Main Component
 function App() {
   return (
     <Router>
