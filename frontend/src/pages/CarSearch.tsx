@@ -128,13 +128,6 @@ const CarSearch: React.FC = () => {
   };
 
   const handleChatBoxSend = (query: string) => handleSend(query);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend(input);
-    }
-  };
 
   const handleClearChat = () => {
     setMessages([{
