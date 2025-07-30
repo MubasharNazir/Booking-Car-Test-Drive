@@ -9,8 +9,6 @@ import {
   Menu, 
   X,
   ChevronRight,
-  Star,
-  MapPin,
   Clock,
   CreditCard
 } from 'lucide-react';
