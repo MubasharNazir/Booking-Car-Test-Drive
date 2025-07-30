@@ -35,7 +35,6 @@ const CarSearch: React.FC = () => {
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   }]);
   const [loading, setLoading] = useState(false);
-  const [input, setInput] = useState('');
   const [activeFuelFilter, setActiveFuelFilter] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -67,7 +66,6 @@ const CarSearch: React.FC = () => {
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
     setMessages(prev => [...prev, userMsg]);
-    setInput('');
     setLoading(true);
     try {
       const res = await chatCarSearch(finalQuery);
@@ -128,16 +126,6 @@ const CarSearch: React.FC = () => {
   };
 
   const handleChatBoxSend = (query: string) => handleSend(query);
-
-  const handleClearChat = () => {
-    setMessages([{
-      id: Date.now(),
-      text: "Hi there! I'm your AI car search assistant. I can help you find the perfect vehicle based on your specific needs and preferences. What kind of car are you looking for today?",
-      isUser: false,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }]);
-    setInput('');
-  };
 
   const showSuggestions = messages.length === 1 && !loading;
 

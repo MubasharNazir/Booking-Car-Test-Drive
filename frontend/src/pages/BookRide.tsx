@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { 
   Car, 
-  Calendar, 
-  Clock, 
   Star, 
   Shield, 
   Zap, 
