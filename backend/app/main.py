@@ -26,8 +26,13 @@ async def startup_event():
     """Create database tables on startup"""
     try:
         async with engine.begin() as conn:
+            # Install pgvector extension first
+            await conn.execute("CREATE EXTENSION IF NOT EXISTS vector")
+            print("✅ pgvector extension installed!")
+            
+            # Create tables
             await conn.run_sync(Base.metadata.create_all)
-        print("✅ Database tables created successfully!")
+            print("✅ Database tables created successfully!")
     except Exception as e:
         print(f"❌ Error creating tables: {e}")
 
