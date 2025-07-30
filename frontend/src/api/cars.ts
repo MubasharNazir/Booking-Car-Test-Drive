@@ -18,7 +18,7 @@ export type Car = {
 };
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'https://booking-car-test-drive.onrender.com',
 });
 
 export async function chatCarSearch(query: string): Promise<Car[] | { message: string }> {
