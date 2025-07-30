@@ -6,6 +6,7 @@ from app.api.upload import router as upload_router
 from app.api.booking import router as booking_router
 from app.db.models import Base
 from app.db.session import engine
+from sqlalchemy import text
 import asyncio
 
 # from app.core.config import settings  # To be implemented
@@ -27,7 +28,7 @@ async def startup_event():
     try:
         async with engine.begin() as conn:
             # Install pgvector extension first
-            await conn.execute("CREATE EXTENSION IF NOT EXISTS vector")
+            await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
             print("✅ pgvector extension installed!")
             
             # Create tables
