@@ -39,4 +39,4 @@ app.include_router(booking_router)
 @app.get("/", tags=["Health"])
 def health_check():
     """Health check endpoint."""
-    return {"status": "ok"}
+    return {"status": "ok", "message": "Database tables will be created on startup"}
